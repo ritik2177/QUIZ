@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     {
       question: "What is the capital of France?",
       choices: ["Paris", "London", "Berlin", "Madrid"],
-      answer: "Parish",
+      answer: "Paris",
     },
     {
       question: "Which planet is known as the Red Planet?",
@@ -21,13 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
       answer: "Mars",
     },
     {
-      question: "Who worte 'Hamlet'?",
+      question: "Who wrote 'Hamlet'?",
       choices:[
-        "charles Dickens",
-        
-      ]
-    }
-  ]
+        "Charles Dickens",
+        "Jane Austen",
+        "William Shakespeare",
+        "Mark Twain",
+      ],
+      answer: "William Shakespeare",
+    },
+  ];
 
-  let currentQuestion
+  let currentQuestionIndex = 0;
+  let score = 0;
+
+  startBtn.addEventListener('click', startQuiz);
+
+  function startQuiz(){
+    startBtn.classList.add('hidden');
+    resultContainer.classList.add('hidden');
+    questionContainer.classList.remove('hidden');
+    showQuestion();
+
+  }
+  function showQuestion(){
+    nextBtn.classList.add('hidden');
+    questionText.textContent = questions[currentQuestionIndex].question;
+    choicesList.innerHTML = ""; //clear previous choices
+    questions[currentQuestionIndex].choices.forEach((choice) => {
+      const li = document.createElement("li");
+      li.textContent = choice;
+      li.addEventListener("click", () => selectAnswer(choice));
+      choicesList.appendChild(li);
+    });
+  }
+  function selectAnswer(choice){
+
+  }
 })
