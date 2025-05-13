@@ -44,6 +44,8 @@ button{
   border-radius: 5px;
   color: white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
   transition :background-color0.3s;
 }
 button:hover{
